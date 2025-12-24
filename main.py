@@ -42,7 +42,6 @@ def read_root():
 
 @app.get("/clima/{ciudad}")
 def obtener_clima(ciudad: str):
-    """Obtiene el clima de una ciudad"""
     ciudad_lower = ciudad.lower()
     if ciudad_lower in datos_clima:
         return datos_clima[ciudad_lower]
@@ -50,7 +49,6 @@ def obtener_clima(ciudad: str):
 
 @app.get("/clima")
 def obtener_clima_query(ciudad: Optional[str] = None):
-    """Obtiene el clima por query parameter"""
     if not ciudad:
         return {"error": "Por favor proporciona una ciudad"}
     
@@ -61,5 +59,4 @@ def obtener_clima_query(ciudad: Optional[str] = None):
 
 @app.get("/ciudades")
 def listar_ciudades():
-    """Lista todas las ciudades disponibles"""
     return {"ciudades": list(datos_clima.keys()), "total": len(datos_clima)}
